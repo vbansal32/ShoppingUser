@@ -18,6 +18,4 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 	
 	@Query("from User where dob between :dateOfBirth1 and :dateOfBirth2")
 	public List<User> findUsersBetweenDob(@Param("dateOfBirth1") Date dateOfBirth1, @Param("dateOfBirth2")Date dateOfBirth2);
-	
-
 }
