@@ -19,6 +19,8 @@ import com.tcs.model.User;
 import com.tcs.repository.UserRepository;
 import com.tcs.service.UserService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/user")
 public class ShoppingUserResource {
@@ -26,7 +28,9 @@ public class ShoppingUserResource {
 	@Autowired
 	UserService userService;
 
-	@GetMapping("/getUser/{userId}")
+	@GetMapping("/getUser/id/{userId}")
+	@ApiOperation(value = "Finds user by userId",
+			notes="provide userId to find user from users list", response = User.class)
 	public Optional<User> getUser(@PathVariable("userId") Integer userId) {
 		return userService.getUserById(userId);
 	}
