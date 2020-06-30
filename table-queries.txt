@@ -1,0 +1,8 @@
+##Mysql queries to createtable
+
+create table user(   userId INT NOT NULL AUTO_INCREMENT,   userName VARCHAR(100) NOT NULL,   dob Date NOT NULL,   address VARCHAR(255),   PRIMARY KEY ( userId ));
+create table user_cart(userId INT NOT NULL,   cartId INT NOT NULL AUTO_INCREMENT,   cartStatus char(1) NOT NULL,   t_stmp_add timestamp default current_timestamp,   t_stmp_upd timestamp default current_timestamp,   PRIMARY KEY ( cartId ) );
+create table cart_items(cartId INT NOT NULL,  itemId INT NOT NULL, itemQty INT NOT NULL,   PRIMARY KEY ( cartId,itemId ) );
+create table orders(orderId INT NOT NULL auto_increment, userId INT NOT NULL,   cartId INT NOT NULL,   orderStatus char(1) NOT NULL,  orderTotal decimal(10,2), paymentStatus char(1) not null, t_stmp_add timestamp default current_timestamp,   t_stmp_upd timestamp default current_timestamp,   PRIMARY KEY ( orderId ) );
+create table order_item(orderId INT NOT NULL , itemId INT NOT NULL,   itemQty INT NOT NULL ,  itemStatus char(1) not null ,   amount decimal(10,2) not null, t_stmp_add timestamp default current_timestamp,   t_stmp_upd timestamp default current_timestamp,   PRIMARY KEY ( orderId, itemId ) );
+create table items(itemId INT NOT NULL auto_increment, description varchar(500) NOT NULL,   price Decimal(10,2) NOT NULL ,  itemAvailability int not null, active char(1) not null ,  t_stmp_add timestamp default current_timestamp,   t_stmp_upd timestamp default current_timestamp,   PRIMARY KEY (itemId ) );
